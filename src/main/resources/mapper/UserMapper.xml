@@ -14,5 +14,5 @@
   <delete id="delete">
     delete from user where id = #{id}
   </delete>
-<!--??-->
+<!--?-->
 </mapper>
