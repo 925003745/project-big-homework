@@ -6,4 +6,13 @@
   <select id="query" resultType="com.hxci.pojo.User">
     select * from user
   </select>
+
+  <insert id="add">
+    insert into user (name,age,bid)values (#{name},#{age},#{bid})
+  </insert>
+
+  <delete id="delete">
+    delete from user where id = #{id}
+  </delete>
+
 </mapper>

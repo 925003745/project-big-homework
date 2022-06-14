@@ -9,4 +9,7 @@ import java.util.List;
 public interface UserMapper {
     //select * from user
     public List<User> query();
+
+    public void add(User user);
+    public void delete(Integer id);
 }

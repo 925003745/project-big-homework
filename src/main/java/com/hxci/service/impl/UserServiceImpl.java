@@ -1,5 +1,6 @@
 package com.hxci.service.impl;
 
+
 import com.hxci.mapper.UserMapper;
 import com.hxci.pojo.User;
 import com.hxci.service.UserService;
@@ -16,5 +17,15 @@ public class UserServiceImpl implements UserService {
 
     public List<User> query() {
         return mapper.query();
+    }
+
+    @Override
+    public void add(User user) {
+        mapper.add(user);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        mapper.delete(id);
     }
 }
