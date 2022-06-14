@@ -6,4 +6,11 @@
   <select id="query__" resultType="com.hxci.pojo.Student">
     select * from student
   </select>
+  <insert id="add">
+    insert into student (id,name,CAG)values (#{id},#{name},#{CAG})
+  </insert>
+
+  <delete id="delete">
+    delete from student where id = #{id}
+  </delete>
 </mapper>

@@ -17,4 +17,10 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> query__() {
         return mapper__.query__();
     }
+    @Override
+    public void add(Student student) {mapper__.add(student);}
+    @Override
+    public void delete(Integer sno) {
+        mapper__.delete(sno);
+    }
 }

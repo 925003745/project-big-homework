@@ -9,4 +9,6 @@ import java.util.List;
 public interface StudentMapper {
     //select * from student
     public List<Student> query__();
+    public void add(Student student);
+    public void delete(Integer sno);
 }

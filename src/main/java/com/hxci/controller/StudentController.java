@@ -25,4 +25,15 @@ public class StudentController {
         return JSONArray.toJSONString(list);
     }
 
+    @ResponseBody
+    @RequestMapping("add")
+    public String add(Student student){
+        service__.add(student);
+        return "1";}
+    @ResponseBody
+    @RequestMapping("delete")
+    public String delete(Integer sno){
+        service__.delete(sno);
+        return "1";
+    }
 }
