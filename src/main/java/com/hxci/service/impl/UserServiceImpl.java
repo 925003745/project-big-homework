@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
+    @Autowired(required = false)
     UserMapper mapper;
 
 
@@ -27,5 +27,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(Integer id) {
         mapper.delete(id);
+    }
+
+    @Override
+    public void update(User user) {
+        mapper.update(user) ;
     }
 }

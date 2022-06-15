@@ -41,4 +41,10 @@ public class UserController {
         return "1";
     }
 
+    @ResponseBody
+    @RequestMapping("update")
+    public String update(User user){
+        service.update(user);
+        return "1";
+    }
 }

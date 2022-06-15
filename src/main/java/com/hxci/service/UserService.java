@@ -9,4 +9,5 @@ public interface UserService {
     public List<User> query();
     public void add(User user);
     public void delete(Integer id);
+    void update(User user);
 }

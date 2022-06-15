@@ -13,4 +13,12 @@
   <delete id="delete">
     delete from student where id = #{id}
   </delete>
+
+  <select id="edit" resultType="com.hxci.pojo.Student">
+    select * from student where id = #{id}
+  </select>
+
+  <update id="update">
+    update student set name=#{name},CAG=#{CAG} where id = #{id}
+  </update>
 </mapper>
