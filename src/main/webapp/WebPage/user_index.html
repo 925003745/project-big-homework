@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>学生管理</title>
+    <link rel="icon" href="./static/favicon.ico">
+    <link rel="stylesheet" href="./static/bootstrap/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="./static/admin/css/index.css" >
+    <link rel="stylesheet" href="./static/admin/css/main.css" >
+    <link rel="stylesheet" href="./static/admin/css/html.css" >
+    <script src="./static/js/vue.min.js"></script>
+    <script src="./static/js/jquery-3.3.1.min.js" ></script>
+    <script src="./static/bootstrap/js/bootstrap.bundle.js" ></script>
+    <script src="./static/admin/js/script.js" ></script>
+
+</head>
+<body>
+
+<div id="app" class="d-flex">
+
+    <nav>
+        <div class="logo">
+            <h4>学生管理系统</h4>
+        </div>
+        <ul class="menu">
+            <li><a href="user_index.html">
+                <i class="iconfont mr-1">&#xe6a2;</i>首页</a>
+            </li>
+            <li><a class="top-menu" href="javascript:">
+                <i class="iconfont mr-1">&#xe6e0;</i>系统管理<i class="iconfont arrow float-right">&#xe66c;</i>
+           </a>
+                <ul class="sub-menu">
+                    <li><a href="user_index.html" >用户列表</a></li>
+                    <li><a href="NotFound.html" >部门列表</a></li>
+                </ul>
+        </ul>
+    </nav>
+
+    <main>
+        <header>
+            <a href="NotFound.html" target="_blank">网站首页</a>
+
+            <div class="dropdown float-right">
+                <button class="btn  btn-sm  dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <svg width="20" height="1em" viewBox="0 0 16 16" class="bi bi-emoji-smile-fill rounded-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zM4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM10 8c.552 0 1-.672 1-1.5S10.552 5 10 5s-1 .672-1 1.5S9.448 8 10 8z"/>
+                    </svg>
+                    <!--可以使用图片,大小20,class='rounded-circle'-->
+                    学生管理
+                </button>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                    <a class="dropdown-item" href="NotFound.html">修改密码</a>
+                    <a class="dropdown-item" href="NotFound.html">退出登录</a>
+                </div>
+            </div>
+
+        </header>
+
+        <div id="body">
+
+
+            <main>
+                <div class="main">
+                    <div class="search">
+                        <form class="form-inline float-left" >
+                            <div class="form-group">
+                                <input type="text" id="name" name="name"  class="form-control" placeholder="姓名">
+                            </div>
+                            <button type="button" onclick="query(1)" class="btn btn-info"><i class="iconfont"></i>搜索</button>
+                        </form>
+                        <a class="btn btn-info float-right" href="user_create.html"><i class="iconfont"></i>新增</a>
+                    </div>
+
+                    <div class="table-box">
+
+                        <table class="table">
+
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>学号</th>
+                                <th>姓名</th>
+                                <th>班级</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tb">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page">
+                        <span class="total float-left page-link" id="tiao">共23223条</span>
+                        <span class="total float-left page-link" id="ye">共23223页</span>
+
+                        <ul class="pagination">
+                            <input type="hidden" id="pageNo">
+                            <li class="page-item"><a class="page-link" href="javascript:beforPage();">上一页</a></li>
+                            <!-- <li class="page-item"><a class="page-link" href="avascript:page('+a+');">a</a></li>
+                     -->
+                            <li class="page-item"><a class="page-link" href="javascript:nextPage();">下一页</a></li>
+                        </ul>
+
+                    </div>
+
+                </div>
+            </main>
+
+        </div>
+
+    </main>
+</div>
+
+<script type="text/javascript">
+    //jquery（十一二、个）轻量级框架注意一定要引入资源文件
+    //页面加载就执行的方法  ,json对象数组 与json字符串
+    $(function(){
+        $.ajax({
+            type: "post",
+            url: "/demo_war_lb/student/query__",
+            dataType:"json",
+            success: function (res) {
+                //id选择器
+                $("#tb").empty();
+                var trs = '';
+                $.each(res,function (i,v) {
+                    trs = trs+'<tr><td width="100" style="text-align:left; padding-left:20px;">'
+                        +(i+1)+'</td><td>'+v.id+'</td> <td>'+v.name+'</td> <td>'+v.cAG+'</td><td width="310">操作</td> </tr>';
+                })
+                //追加
+                $("#tb").append(trs);
+            }
+        })
+    })
+
+
+
+</script>
+
+</body>
+
+</html>
