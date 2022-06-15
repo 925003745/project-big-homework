@@ -116,22 +116,21 @@
 </div>
 
 <script type="text/javascript">
-    //jquery（十一二、个）轻量级框架注意一定要引入资源文件
-    //页面加载就执行的方法  ,json对象数组 与json字符串
+
     $(function(){
         $.ajax({
             type: "post",
             url: "/demo_war_lb/student/query__",
             dataType:"json",
             success: function (res) {
-                //id选择器
+
                 $("#tb").empty();
                 var trs = '';
                 $.each(res,function (i,v) {
                     trs = trs+'<tr><td width="100" style="text-align:left; padding-left:20px;">'
                         +(i+1)+'</td><td>'+v.id+'</td> <td>'+v.name+'</td> <td>'+v.cAG+'</td><td width="310">操作</td> </tr>';
                 })
-                //追加
+
                 $("#tb").append(trs);
             }
         })
