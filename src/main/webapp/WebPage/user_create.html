@@ -6,7 +6,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>添加用户 - BsAdmin后台模板 - 经典版演示</title>
+    <title>添加用户</title>
     <link rel="icon" href="./static/favicon.ico">
     <link rel="stylesheet" href="./static/bootstrap/css/bootstrap.min.css" >
     <link rel="stylesheet" href="./static/admin/css/index.css" >
@@ -33,10 +33,10 @@
             <h4>学生管理系统</h4>
         </div>
         <ul class="menu">
-            <li><a href="main.html">
+            <li><a href="user_index.html">
                 <i class="iconfont mr-1">&#xe6a2;</i>首页</a>
             </li>
-            <li><a class="top-menu" href="javascript:;">
+            <li><a class="top-menu" href="javascript:">
                 <i class="iconfont mr-1">&#xe6e0;</i>用户管理<i class="iconfont arrow float-right">&#xe66c;</i>
             </a>
                 <ul class="sub-menu">
@@ -48,7 +48,7 @@
 
     <main>
         <header>
-            <a href="http://www.qadmin.net" target="_blank">网站首页</a>
+            <a href="NotFound.html" target="_blank">网站首页</a>
 
             <div class="dropdown float-right">
                 <button class="btn  btn-sm  dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,15 +60,15 @@
                 </button>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                    <a class="dropdown-item" href="repwd.html">修改密码</a>
-                    <a class="dropdown-item" href="out.html">退出登录</a>
+                    <a class="dropdown-item" href="NotFound.html">修改密码</a>
+                    <a class="dropdown-item" href="NotFound.html">退出登录</a>
                 </div>
             </div>
 
         </header>
 
         <div id="body">
-            
+
 
 <main>
     <div class="main">
@@ -79,33 +79,27 @@
         <div class="form-box">
             <div class="row">
                 <div class="col-5">
+
                     <form id="form">
-                        <input id="id" name="id" type="hidden"/>
+                        <div class="form-group">
+                            <label>学号</label>
+                            <input id="id" type="number" name="id" class="form-control">
+                            <small class="form-text text-muted"></small>
+                        </div>
+
                         <div class="form-group">
                             <label>姓名</label>
                             <input id="name" type="text" name="name" class="form-control">
                             <small class="form-text text-muted"></small>
                         </div>
-                        <div class="form-group">
-                            <label>年龄</label>
-                            <input id="age" type="number" name="age" class="form-control">
-                            <small class="form-text text-muted"></small>
-                        </div>
 
                         <div class="form-group">
-                            <label>部门</label>
-
-                            <select id="dept" name="did" class="form-control">
-
-
-                            </select>
-
+                            <label>班级</label>
+                            <input id="cAG" type="number" name="cAG" class="form-control">
                             <small class="form-text text-muted"></small>
                         </div>
-
-
-
                     </form>
+
                 </div>
             </div>
 
@@ -127,59 +121,52 @@
 </div>
 
 </body>
+
+<script>
+
+</script>
+
 <SCRIPT>
-    $(function () {
-        var id = (window.location.href).split('?')[1];
+    // $(function () {
+    //     var id = (window.location.href).split('?')[1];
+    //
+    //     var did ='';
+    //     $.ajax({
+    //         type:"post",
+    //         url:"/demo_war_lb/student/add",
+    //         data:{"id":id},
+    //         dataType:"json",
+    //         ansyc:false,
+    //         success:function (data) {
+    //             var did ="";
+    //             if(data.user != null) {
+    //                 $("#name").val(data.user.name);
+    //                 $("#age").val(data.user.age);
+    //                 $("#id").val(data.user.id);
+    //                 did =data.user.did;
+    //
+    //             }
+    //              $("#dept").empty();
+    //             var ht = '';
+    //             $.each(data.list,function (i,v) {
+    //                 var c ='';
+    //                 if(v.id ===did ){c ='selected=true'}
+    //
+    //                 ht = ht + '<option '+c+' value="'+v.id+'">'+v.dname+'</option>';
+    //             });
+    //             $("#dept").append(ht);
+    //         }
+    //     });
+    // })
 
-        var did ='';
-        $.ajax({
-            type:"post",
-            url:"user/one",
-            data:{"id":id},
-            dataType:"json",
-            ansyc:false,
-            success:function (data) {
-                var did ="";
-                if(data.user != null) {
-                    $("#name").val(data.user.name);
-                    $("#age").val(data.user.age);
-                    $("#id").val(data.user.id);
-                    did =data.user.did;
 
-                }
-                 $("#dept").empty();
-                var ht = '';
-                $.each(data.list,function (i,v) {
-                    var c ='';
-                    if(v.id ==did ){c ='selected=true'};
-
-                    ht = ht + '<option '+c+' value="'+v.id+'">'+v.dname+'</option>';
-                });
-                $("#dept").append(ht);
-            }
-
-        });
-
-/*
-        $.ajax({
-            type:"post",
-            url:"user/dept",
-            dataType:"json",
-            success:function (data) {
-
-            }
-
-        });*/
-    })
-    //var name=$("#name").val()
-    //var age=$("#age").val()
     function sub() {
         $.ajax({
             type:"post",
-            url:"user/add",
-            data:$("#form").serialize(),//{'name':name，‘age’:age}
+            url:"/demo_war_lb/student/add",
+            data:$("#form").serialize(),
             success:function () {
-               window.location.href="user_index.html";
+               window.location.href="http://localhost/demo_war_lb/WebPage/user_index.html";
             }
 
         });
