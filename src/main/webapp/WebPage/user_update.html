@@ -162,11 +162,11 @@
             url:"/demo_war_lb/student/update",
             data:$("#form").serialize(),
             success:function () {
-                alert("insert Successful !")
+                alert("update Successful !")
                 window.location.href="http://localhost/demo_war_lb/WebPage/user_index.html";
             },
             error:function () {
-                alert("Insert the failure ! \nReason:" +
+                alert("update the failure ! \nReason:" +
                     "\n【The database does not allow null values】\n  or" +
                     "\n【The data is too long】\n  or" +
                     "\n...")
