@@ -86,6 +86,7 @@
                                 <th>姓名</th>
                                 <th>班级</th>
                                 <th>操作</th>
+                                <th>操作2</th>
                             </tr>
                             </thead>
                             <tbody id="tb">
@@ -127,8 +128,14 @@
                 $("#tb").empty();
                 var trs = '';
                 $.each(res,function (i,v) {
-                    trs = trs+'<tr><td width="100" style="text-align:left; padding-left:20px;">'
-                        +(i+1)+'</td><td>'+v.id+'</td> <td>'+v.name+'</td> <td>'+v.cAG+'</td><td width="310">操作</td> </tr>';
+                    trs = trs+'<tr>' +
+                        '<td width="100" style="text-align:left; padding-left:20px;">'+(i+1)+'</td>' +
+                        '<td>'+v.id+'</td>' +
+                        '<td>'+v.name+'</td>' +
+                        '<td>'+v.cAG+'</td>' +
+                        '<td width="100"><button onclick="del('+v.id+')">删除</button></td>' +
+                        '<td width="100"><button onclick="jump('+v.id+')">修改</button></td>' +
+                        '</tr>';
                 })
 
                 $("#tb").append(trs);
@@ -136,7 +143,23 @@
         })
     })
 
+    function del(_){
+        $.ajax({
+            type: "post",
+            url: "/demo_war_lb/student/delete",
+            data:{
+                id:_
+            },
+            success:function (){
+                alert("delete successful !")
+                window.location.href="http://localhost/demo_war_lb/WebPage/user_index.html";
+            }
+        })
+    }
 
+    function jump(__) {
+        window.location.href="http://localhost/demo_war_lb/WebPage/user_update.html"+'?id='+__
+    }
 
 </script>
 

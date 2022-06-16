@@ -70,48 +70,48 @@
         <div id="body">
 
 
-<main>
-    <div class="main">
+            <main>
+                <div class="main">
 
-        <div class="title-box">
-            <h5>新增用户</h5>
-        </div>
-        <div class="form-box">
-            <div class="row">
-                <div class="col-5">
+                    <div class="title-box">
+                        <h5>新增用户</h5>
+                    </div>
+                    <div class="form-box">
+                        <div class="row">
+                            <div class="col-5">
 
-                    <form id="form">
-                        <div class="form-group">
-                            <label>学号</label>
-                            <input id="id" type="number" name="id" class="form-control">
-                            <small class="form-text text-muted"></small>
+                                <form id="form">
+                                    <div class="form-group">
+                                        <label>学号</label>
+                                        <input id="id" type="number" name="id" class="form-control">
+                                        <small class="form-text text-muted"></small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>姓名</label>
+                                        <input id="name" type="text" name="name" class="form-control">
+                                        <small class="form-text text-muted"></small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>班级</label>
+                                        <input id="cAG" type="number" name="cAG" class="form-control">
+                                        <small class="form-text text-muted"></small>
+                                    </div>
+                                </form>
+
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label>姓名</label>
-                            <input id="name" type="text" name="name" class="form-control">
-                            <small class="form-text text-muted"></small>
-                        </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label>班级</label>
-                            <input id="cAG" type="number" name="cAG" class="form-control">
-                            <small class="form-text text-muted"></small>
-                        </div>
-                    </form>
 
+                    <div class="submit-box">
+                        <button type="button" onclick="sub()" class="btn btn-primary">确定提交</button>
+                        <button type="button" onclick="window.history.back()" class="btn btn-outline-secondary">取消</button>
+                    </div>
                 </div>
-            </div>
-
-        </div>
-
-
-        <div class="submit-box">
-            <button type="button" onclick="sub()" class="btn btn-primary">确定提交</button>
-            <button type="button" onclick="window.history.back()" class="btn btn-outline-secondary">取消</button>
-        </div>
-    </div>
-</main>
+            </main>
 
 
 
@@ -123,11 +123,43 @@
 </body>
 
 <script>
+    $(function () {
+        const id__ = (window.location.href).split('?')[1];
+        alert(id__.split("=")[1])
+        var did ='';
+        $.ajax({
+            type:"post",
+            url:"/demo_war_lb/student/edit",
+            data:{
+                id:id__.split("=")[1]
+            },
+            dataType:"json",
+            ansyc:false,
+            success:function (data) {
+                alert(data[0])
+                var did ="";
+                $("#id").val(data.id);
+                $("#name").val(data.name);
+                $("#cAG").val(data.cAG);
+                did =data.user.did;
+                $("#form").empty();
+                var ht = '';
+                $.each(data.list,function (i,v) {
+                    var c ='';
+                    if(v.id ===did ){c ='selected=true'}
+
+                    ht = ht + '<option '+c+' value="'+v.id+'">'+v.dname+'</option>';
+                });
+                $("#form").append(ht);
+            }
+        });
+    })
+
 
     function sub() {
         $.ajax({
             type:"post",
-            url:"/demo_war_lb/student/add",
+            url:"/demo_war_lb/student/update",
             data:$("#form").serialize(),
             success:function () {
                 alert("insert Successful !")

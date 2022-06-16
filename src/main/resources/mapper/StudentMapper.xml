@@ -21,4 +21,5 @@
   <update id="update">
     update student set name=#{name},CAG=#{CAG} where id = #{id}
   </update>
+<!--  http://localhost/demo_war_lb/student/update?id=2020080211&CAG=2005&name=father-->
 </mapper>

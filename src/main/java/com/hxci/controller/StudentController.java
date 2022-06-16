@@ -19,7 +19,7 @@ public class StudentController {
     StudentService service__;
 
     @ResponseBody
-    @RequestMapping("query__")
+    @RequestMapping(value="query__", produces = "text/html; charset=utf-8")//value="query__", produces = "text/html; charset=utf-8"
     public String query__(){
         List<Student> list =service__.query__();
         return JSONArray.toJSONString(list);
