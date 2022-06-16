@@ -125,7 +125,6 @@
 <script>
     $(function () {
         const id__ = (window.location.href).split('?')[1];
-        alert(id__.split("=")[1])
         var did ='';
         $.ajax({
             type:"post",
@@ -136,7 +135,6 @@
             dataType:"json",
             ansyc:false,
             success:function (data) {
-                alert(data[0])
                 var did ="";
                 $("#id").val(data.id);
                 $("#name").val(data.name);
