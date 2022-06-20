@@ -6,8 +6,13 @@
   <select id="query__" resultType="com.hxci.pojo.Student">
     select * from student
   </select>
+
+  <select id="login__" resultType="com.hxci.pojo.Student">
+    select * from student where id = #{id} and name = #{name}
+  </select>
+
   <insert id="add">
-    insert into student (id,name,CAG)values (#{id},#{name},#{CAG})
+    insert into student (id,name)values (#{id},#{name})
   </insert>
 
   <delete id="delete">

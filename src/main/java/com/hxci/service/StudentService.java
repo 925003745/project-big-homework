@@ -9,6 +9,9 @@ public interface StudentService {
     public void add(Student student);
     public void delete(Integer id);
     public Student edit(Integer id);
-
     public void update(Student student);
+
+
+    public Student login__(Student student);
+
 }

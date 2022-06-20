@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <html>
+<meta http-equiv="refresh" content="0;url=http://localhost:8080/demo_war/New/login.html">
 <body>
-<h2>Hello World! 张三</h2>
-<a href="http://localhost/demo_war_lb/WebPage/user_index.html">http://localhost/demo_war_lb/WebPage/user_index.html</a>
+
 </body>
 </html>

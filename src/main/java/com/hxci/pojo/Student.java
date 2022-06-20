@@ -4,7 +4,7 @@ public class Student {
 
     private Integer id;
     private String name;
-    private Integer CAG;
+
 
     public Integer getId() {
         return id;
@@ -20,14 +20,6 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getCAG() {
-        return CAG;
-    }
-
-    public void setCAG(Integer CAG) {
-        this.CAG = CAG;
     }
 
 }

@@ -18,8 +18,22 @@ public class StudentController {
     @Autowired
     StudentService service__;
 
+
+
+
     @ResponseBody
-    @RequestMapping(value="query__", produces = "text/html; charset=utf-8")//value="query__", produces = "text/html; charset=utf-8"
+    @RequestMapping(value="login__", produces = "text/html; charset=utf-8")
+    public String login(Student student){
+        Student $ = service__.login__(student);
+        if ($ != null){
+            return "Y";
+        }
+        return "N";
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value="query__", produces = "text/html; charset=utf-8")
     public String query__(){
         List<Student> list =service__.query__();
         return JSONArray.toJSONString(list);

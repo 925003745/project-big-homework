@@ -6,6 +6,7 @@ import com.hxci.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -18,6 +19,13 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> query__() {
         return mapper__.query__();
     }
+
+    @Override
+    public Student login__(Student student){
+        return mapper__.login__(student);
+    }
+
+
     @Override
     public void add(Student student) {
         mapper__.add(student);
@@ -35,4 +43,5 @@ public class StudentServiceImpl implements StudentService {
     public void update(Student student) {
         mapper__.update(student);
     }
+
 }
