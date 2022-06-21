@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
     <!--若springmvc中只扫描controller,则需要加上service,和dao的扫描功能-->
-    <context:component-scan base-package="com.hxci"/>
+    <context:component-scan base-package="com.backed"/>
     <context:property-placeholder location="classpath:database.properties"/>
     <bean id="dataSource"  class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close" scope="singleton">
         <property name="driverClassName" value="${driver}" />

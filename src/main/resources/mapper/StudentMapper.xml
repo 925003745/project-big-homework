@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--//-->
-<mapper namespace="com.hxci.mapper.StudentMapper">
+<mapper namespace="com.backed.mapper.StudentMapper">
 
-  <select id="query__" resultType="com.hxci.pojo.Student">
+  <select id="query__" resultType="com.backed.pojo.Student">
     select * from student
   </select>
 
-  <select id="login__" resultType="com.hxci.pojo.Student">
+  <select id="login__" resultType="com.backed.pojo.Student">
     select * from student where id = #{id} and name = #{name}
   </select>
 
@@ -19,12 +19,12 @@
     delete from student where id = #{id}
   </delete>
 
-  <select id="edit" resultType="com.hxci.pojo.Student">
+  <select id="edit" resultType="com.backed.pojo.Student">
     select * from student where id = #{id}
   </select>
 
   <update id="update">
-    update student set name=#{name},CAG=#{CAG} where id = #{id}
+    update student set name=#{name} where id = #{id}
   </update>
 <!--  http://localhost/demo_war_lb/student/update?id=2020080211&CAG=2005&name=father-->
 </mapper>

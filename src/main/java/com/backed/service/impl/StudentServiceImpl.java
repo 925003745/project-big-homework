@@ -1,12 +1,11 @@
-package com.hxci.service.impl;
+package com.backed.service.impl;
 
-import com.hxci.mapper.StudentMapper;
-import com.hxci.pojo.Student;
-import com.hxci.service.StudentService;
+import com.backed.mapper.StudentMapper;
+import com.backed.pojo.Student;
+import com.backed.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 @Service

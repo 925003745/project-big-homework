@@ -1,4 +1,4 @@
-package com.hxci.pojo;
+package com.backed.pojo;
 
 public class Student {
 

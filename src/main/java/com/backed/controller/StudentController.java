@@ -1,33 +1,37 @@
-package com.hxci.controller;
+package com.backed.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.hxci.pojo.Student;
-import com.hxci.service.StudentService;
+import com.backed.pojo.Student;
+import com.backed.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@RequestMapping("student")
+@RequestMapping("client")
 public class StudentController {
 
     @Autowired
     StudentService service__;
 
-
-
-
     @ResponseBody
     @RequestMapping(value="login__", produces = "text/html; charset=utf-8")
-    public String login(Student student){
+    public String login__(Student student, HttpSession session){
+        System.out.println("a");
         Student $ = service__.login__(student);
         if ($ != null){
+            System.out.println("b");
+            session.setAttribute("users",true);
             return "Y";
         }
+        System.out.println("c");
+        session.setAttribute("users",false);
         return "N";
     }
 
